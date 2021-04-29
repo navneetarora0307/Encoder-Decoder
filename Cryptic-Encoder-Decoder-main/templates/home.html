@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container-fluid bg-light text-light text-center" style="height: 100vh;">
+        <div>
+            {% if reply=="Welcome!!!" %}
+                <div class="bg-dark mt-5">
+                    <h1 class="display-1">{{reply}}</h1>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-9">
+                                <h4 class="text-wrap">
+                                    This app encodes a message and displays the cipher text which can be shared with another person who can use it to decrypt the message using this app.
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-success text-decoration-none m-5 px-5 btn-lg">
+                            <a href="/encrypt" style="color: black;">
+                                Encrypt
+                            </a>
+                        </button>
+                        <button class="btn btn-success text-decoration-none m-5 px-5 btn-lg">
+                            <a href="/decrypt" style="color: black;">
+                                Decrypt
+                            </a>
+                        </button>
+                    </div>
+                </div>
+            {% endif %}
+            {% if reply=="Error" %}
+                <h1 class="display-1 text-danger">{{reply}}</h1>
+                <h2 class="display-3 text-danger">
+                    404 Try again!!!
+                </h2>
+                <div>
+                    <button class="btn btn-success text-decoration-none m-5 px-5 btn-lg">
+                        <a href="/" style="color: black;">
+                            Home
+                        </a>
+                    </button>
+                </div>
+            {% endif %}
+            {% if reply=="Success" %}
+                <div class="bg-dark mt-5">
+                    <h1 class="display-1 text-success">{{reply}}</h1>
+                    <div>
+                        {% if flag==True %}
+                            <h2 class="display-4 text-success">
+                                Cipher Text for your message :
+                            </h2>
+                            {{text}}
+                            <h2 class="text-warning">
+                                Copy and store for Decoding the message.
+                            </h2>
+                            <button class="btn btn-success text-decoration-none m-5 px-5 btn-lg">
+                                <a href="/" style="color: black;">
+                                    Home
+                                </a>
+                            </button>
+                            <button class="btn btn-success text-decoration-none m-5 px-5 btn-lg">
+                                <a href="/decrypt" style="color: black;">
+                                    Decrypt
+                                </a>
+                            </button>
+                        {% endif %}
+                        {% if flag==False %}
+                            <h2 class="display-4 text-success">
+                                Decoded message : 
+                            </h2>
+                            <div class="display-4">
+                                {{text}}
+                            </div>
+                            <br>
+                            <button class="btn btn-success text-decoration-none m-5 px-5 btn-lg">
+                                <a href="/" style="color: black;">
+                                    Home
+                                </a>
+                            </button>
+                            <button class="btn btn-success text-decoration-none m-5 px-5 btn-lg">
+                                <a href="/encrypt" style="color: black;">
+                                    Encrypt
+                                </a>
+                            </button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
